@@ -1,2 +1,3 @@
 proxy:
   /transcribe: http://141.148.220.93:8000/transcribe
+  /google: https://google.com
