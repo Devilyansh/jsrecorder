@@ -145,22 +145,22 @@ function createDownloadLink(blob) {
 	
 	//upload link
 	var upload = document.createElement('a');
-	upload.href="#";
+	upload.href = "#";
 	upload.innerHTML = "Upload";
-	upload.addEventListener("click", function(event){
-		  var xhr=new XMLHttpRequest();
-		  xhr.onload=function(e) {
-		      if(this.readyState === 4) {
-		          console.log("Server returned: ",e.target.responseText);
-		      }
-		  };
-		  var fd=new FormData();
-		  fd.append("audio_data",blob, filename);
-		  xhr.open("POST","upload.php",true);
-		  xhr.send(fd);
-	})
-	li.appendChild(document.createTextNode (" "))//add a space in between
-	li.appendChild(upload)//add the upload link to li
+	upload.addEventListener("click", function (event) {
+	  var xhr = new XMLHttpRequest();
+	  xhr.onload = function (e) {
+		if (this.readyState === 4) {
+		  console.log("Server returned:", e.target.responseText);
+		}
+	  };
+	  var fd = new FormData();
+	  fd.append("audio_file", blob, filename); // Rename the "audio_data" key to "audio_file"
+	  xhr.open("POST", "http://141.148.220.93:8000/transcribe", true); // Replace "upload.php" with "/transcribe", your FastAPI endpoint
+	  xhr.send(fd);
+	});
+	li.appendChild(document.createTextNode(" ")); // Add a space in between
+	li.appendChild(upload); // Add the upload link to li
 
 	//add the li element to the ol
 	recordingsList.appendChild(li);
