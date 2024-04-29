@@ -146,10 +146,10 @@ function createDownloadLink(blob) {
 //upload link
 	var upload = document.createElement('a');
 	upload.href="#";
-	upload.innerHTML = "Upload to fast";
+	upload.innerHTML = "Upload to Transcribe";
 	upload.addEventListener("click", function(event){
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://141.148.220.93:8000/transcribe", true);
+	xhr.open("POST", "/transcribe", true);
 	xhr.setRequestHeader("Content-Type", "multipart/form-data");
 	var fd = new FormData();
 	fd.append("audio_file", blob, filename);
